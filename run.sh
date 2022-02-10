@@ -1,11 +1,8 @@
 #!/bin/bash
-cd D:\JS\all
+cd D:/JS/a
 git add .
-#git commit -m "update"
-#git commit --amend --date=now
-git commit --amend --date="now"
+git commit -m "update"
 git remote rm origin
-git remote add origin git@github.com:ltc2019/a.git
-git remote add origin git@github.com:ltc2019/a.git
 git pull --a origin main
+git remote add origin git@github.com:ltc2019/a.git
 git push -u origin main

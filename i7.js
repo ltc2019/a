@@ -10,7 +10,7 @@
 ============Quantumultx===============
 [task_local]
 #爱企查-监控商品
-0 0/5 * * * ? https://github.com/JDWXX/ql_all/blob/master/qt/aqc/jd_aqc_jk.js, tag=爱企查-监控商品, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
+*/30 * * * * * https://github.com/JDWXX/ql_all/blob/master/qt/aqc/jd_aqc_jk.js, tag=爱企查-监控商品, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
 
 ================Loon==============
 [Script]

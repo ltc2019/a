@@ -95,7 +95,7 @@ function home(url,Cookie) {
                     // console.log(data)
                     if(data.data.AQ03008){
                         let name = "京东E卡50元"
-                        let msg = "JDWXX库为你监控的【" + name + "】有库存了，快点来兑换 https://qiye.baidu.com/usercenter#/mall"
+                        let msg = "JDWXX库为你监控的【" + name + "】京东E卡有货了，速速去APP兑换\n京东E卡有货了，速速去APP兑换\n京东E卡有货了，速速去APP兑换\n https://qiye.baidu.com/usercenter#/mall"
                         await notify.sendNotify($.name, msg);
                     }else{
                         console.log("京东E卡50元 无库存")

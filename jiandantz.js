@@ -118,7 +118,7 @@ async function showMsg() {
 
     ReturnMessage=`📣=============账号${$.index}=============📣\n`
     ReturnMessage+=`账号：${$.nickName || $.UserName}=`;
-    ReturnMessage+=`${$.message}\n\n`;
+    ReturnMessage+=`${$.message}`;
     allMessage+=ReturnMessage;
     $.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }

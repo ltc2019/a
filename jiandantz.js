@@ -119,8 +119,8 @@ async function showMsg() {
     ReturnMessage=`📣=============账号${$.index}=============📣\n`
     ReturnMessage+=`账号：${$.nickName || $.UserName}=`;
     ReturnMessage+=`${$.message}\n\n`;
-    //allMessage+=ReturnMessage;
-    //$.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
+    allMessage+=ReturnMessage;
+    $.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }
 async function bean() {
     // console.log(`北京时间零点时间戳:${parseInt((Date.now() + 28800000) / 86400000) * 86400000 - 28800000}`);

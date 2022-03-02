@@ -3,7 +3,7 @@ cron "30 10,22 * * *" jd_bean_change.js, tag:红包变化强化版by-ccwav
 */
 
 //更新by ccwav,20210821
-const $ = new Env('京东红包通知');
+const $ = new Env('JD红包单独通知');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const JXUserAgent =  $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USER_AGENT : ``):``;
 //Node.js用户请在jdCookie.js处填写京东ck;

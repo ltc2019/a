@@ -14,7 +14,7 @@ let args_xh = {
      * 每多少个账号发送一次通知，默认为2
      * 可通过环境变量控制 JD_BEAN_CHANGE_SENDNUM
      * */
-    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 10,
+    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 60,
 }
 let allMessage = '';
 let ReturnMessage = '';

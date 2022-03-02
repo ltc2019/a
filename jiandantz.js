@@ -3,7 +3,7 @@ cron "30 10,22 * * *" jd_bean_change.js, tag:红包变化强化版by-ccwav
 */
 
 //更新by ccwav,20210821
-const $ = new Env('JD红包单独通知');
+const $ = new Env('京东红包通知');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const JXUserAgent =  $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USER_AGENT : ``):``;
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -14,7 +14,7 @@ let args_xh = {
      * 每多少个账号发送一次通知，默认为2
      * 可通过环境变量控制 JD_BEAN_CHANGE_SENDNUM
      * */
-    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 60,
+    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 55,
 }
 let allMessage = '';
 let ReturnMessage = '';
@@ -117,8 +117,39 @@ async function showMsg() {
     // }
 
     ReturnMessage=`📣=============账号${$.index}=============📣\n`
-    ReturnMessage+=`账号：${$.nickName || $.UserName}=`;
-    ReturnMessage+=`${$.message}`;
+    ReturnMessage+=`账号名称：${$.nickName || $.UserName}`;
+    //ReturnMessage+=`今日收入：${$.todayIncomeBean}京豆 🐶\n`;
+    //ReturnMessage+=`昨日收入：${$.incomeBean}京豆 🐶\n`;
+
+    //if(typeof $.JdzzNum !== "undefined"){
+    //    ReturnMessage+=`京东赚赚：${$.JdzzNum}金币(≈${$.JdzzNum / 10000}元)\n`;
+    //}
+    //if($.JdFarmProdName != ""){
+      //  if($.JdtreeEnergy!=0){
+        //    ReturnMessage+=`东东农场：${$.JdFarmProdName},进度${(($.JdtreeEnergy / $.JdtreeTotalEnergy) * 100).toFixed(2)}%`;
+          //  if($.JdwaterD!='Infinity' && $.JdwaterD!='-Infinity'){
+            //    ReturnMessage+=`,${$.JdwaterD === 1 ? '明天' : $.JdwaterD === 2 ? '后天' : $.JdwaterD + '天后'}可兑🍉\n`;
+            //} else {
+              //  ReturnMessage+=`\n`;
+            //}
+        //} else {
+          //  ReturnMessage+=`东东农场：${$.JdFarmProdName}\n`;
+        //}
+    //}
+
+    //const response = await await PetRequest('energyCollect');
+    //const initPetTownRes = await PetRequest('initPetTown');
+    //if (initPetTownRes.code === '0' && initPetTownRes.resultCode === '0' && initPetTownRes.message === 'success') {
+      //  $.petInfo = initPetTownRes.result;
+       // if (response.resultCode === '0') {
+        //    ReturnMessage += `东东萌宠：${$.petInfo.goodsInfo.goodsName},`;
+         //   ReturnMessage += `勋章${response.result.medalNum}/${response.result.medalNum+response.result.needCollectMedalNum}块(${response.result.medalPercent}%)\n`;
+            //ReturnMessage += `          已有${response.result.medalNum}块勋章，还需${response.result.needCollectMedalNum}块\n`;
+
+        //}
+    //}
+    //ReturnMessage+=`🧧🧧🧧🧧红包明细🧧🧧🧧🧧`;
+    ReturnMessage+=`${$.message}\n\n`;
     allMessage+=ReturnMessage;
     $.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }
@@ -365,9 +396,10 @@ function redPacket() {
                         $.jdhRed = $.jdhRed.toFixed(2)
                         $.balance = data.balance
                         $.expiredBalance = ($.jxRedExpire + $.jsRedExpire + $.jdRedExpire).toFixed(2)
-                        $.message += `\n总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n`;
-						//$.message += `\n总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n京喜红包：${$.jxRed}(今日将过期${$.jxRedExpire.toFixed(2)})元 🧧\n极速红包：${$.jsRed}(今日将过期${$.jsRedExpire.toFixed(2)})元 🧧\n京东红包：${$.jdRed}(今日将过期${$.jdRedExpire.toFixed(2)})元 🧧\n`;
-                    } else {
+                        $.message += `\n当前总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n京喜红包：${$.jxRed}(今日将过期${$.jxRedExpire.toFixed(2)})元 🧧\n京东红包：${$.jdRed}(今日将过期${$.jdRedExpire.toFixed(2)})元 🧧\n`;
+                        //$.message += `\n当前总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n京喜红包：${$.jxRed}(今日将过期${$.jxRedExpire.toFixed(2)})元 🧧\n极速红包：${$.jsRed}(今日将过期${$.jsRedExpire.toFixed(2)})元 🧧\n京东红包：${$.jdRed}(今日将过期${$.jdRedExpire.toFixed(2)})元 🧧\n健康红包：${$.jdhRed}(今日将过期${$.jdhRedExpire.toFixed(2)})元 🧧`;
+                 
+					} else {
                         console.log(`京东服务器返回空数据`)
                     }
                 }

@@ -1,9 +1,9 @@
 /*
-cron "30 10,22 * * *" jd_bean_change.js, tag:资产变化强化版by-ccwav
+cron "30 10,22 * * *" jd_bean_change.js, tag:红包变化强化版by-ccwav
 */
 
 //更新by ccwav,20210821
-const $ = new Env('京东资产变动通知');
+const $ = new Env('京东红包通知');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const JXUserAgent =  $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USER_AGENT : ``):``;
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -14,7 +14,7 @@ let args_xh = {
      * 每多少个账号发送一次通知，默认为2
      * 可通过环境变量控制 JD_BEAN_CHANGE_SENDNUM
      * */
-    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 2,
+    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 10,
 }
 let allMessage = '';
 let ReturnMessage = '';
@@ -120,20 +120,9 @@ async function showMsg() {
     ReturnMessage+=`账号名称：${$.nickName || $.UserName}\n`;
     ReturnMessage+=`今日收入：${$.todayIncomeBean}京豆 🐶\n`;
     ReturnMessage+=`昨日收入：${$.incomeBean}京豆 🐶\n`;
-    ReturnMessage+=`昨日支出：${$.expenseBean}京豆 🐶\n`;
-    ReturnMessage+=`当前京豆：${$.beanCount}(今日将过期${$.expirejingdou})京豆🐶\n`;
 
-    if(typeof $.JDEggcnt !== "undefined"){
-        ReturnMessage+=`京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
-    }
-    if(typeof $.JDtotalcash !== "undefined"){
-        ReturnMessage+=`极速金币：${$.JDtotalcash}金币(≈${$.JDtotalcash / 10000}元)\n`;
-    }
     if(typeof $.JdzzNum !== "undefined"){
         ReturnMessage+=`京东赚赚：${$.JdzzNum}金币(≈${$.JdzzNum / 10000}元)\n`;
-    }
-    if($.JdMsScore!=0){
-        ReturnMessage+=`京东秒杀：${$.JdMsScore}秒秒币(≈${$.JdMsScore / 1000}元)\n`;
     }
     if($.JdFarmProdName != ""){
         if($.JdtreeEnergy!=0){
@@ -146,12 +135,6 @@ async function showMsg() {
         } else {
             ReturnMessage+=`东东农场：${$.JdFarmProdName}\n`;
         }
-    }
-    if ($.jxFactoryInfo) {
-        ReturnMessage += `京喜工厂：${$.jxFactoryInfo}🏭\n`
-    }
-    if ($.ddFactoryInfo) {
-        ReturnMessage += `东东工厂：${$.ddFactoryInfo}🏭\n`
     }
 
     const response = await await PetRequest('energyCollect');

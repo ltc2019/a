@@ -150,7 +150,7 @@ async function showMsg() {
         //}
     //}
     //ReturnMessage+=`🧧🧧🧧🧧红包明细🧧🧧🧧🧧`;
-    ReturnMessage+=`${$.message}`;
+    ReturnMessage+=`${$.message}\n`;
     allMessage+=ReturnMessage;
     $.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }

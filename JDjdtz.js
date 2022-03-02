@@ -14,7 +14,7 @@ let args_xh = {
      * 每多少个账号发送一次通知，默认为2
      * 可通过环境变量控制 JD_BEAN_CHANGE_SENDNUM
      * */
-    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 2,
+    sendNum: process.env.JD_BEAN_CHANGE_SENDNUM * 1 || 1,
 }
 let allMessage = '';
 let ReturnMessage = '';
@@ -116,20 +116,21 @@ async function showMsg() {
     //   await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
     // }
 
-    ReturnMessage=`📣账号${$.index}`
-    ReturnMessage+=`账号名称：${$.UserName}`;
-	ReturnMessage+=`昨入：${$.incomeBean}\n`;
-    ReturnMessage+=`今入：${$.todayIncomeBean}\n`;
-    ReturnMessage+=`总京豆：${$.beanCount}\n`;
+    ReturnMessage=`📣=============账号${$.index}=============📣\n`
+    ReturnMessage+=`账号名称：${$.nickName || $.UserName}\n`;
+    ReturnMessage+=`今日收入：${$.todayIncomeBean}京豆 🐶\n`;
+    ReturnMessage+=`昨日收入：${$.incomeBean}京豆 🐶\n`;
+    //ReturnMessage+=`昨日支出：${$.expenseBean}京豆 🐶\n`;
+    ReturnMessage+=`当前京豆：${$.beanCount}(今日将过期${$.expirejingdou})京豆🐶\n`;
 
     //if(typeof $.JDEggcnt !== "undefined"){
-      //  ReturnMessage+=`京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
+    //    ReturnMessage+=`京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
     //}
     //if(typeof $.JDtotalcash !== "undefined"){
-      //  ReturnMessage+=`极速金币：${$.JDtotalcash}金币(≈${$.JDtotalcash / 10000}元)\n`;
+    //    ReturnMessage+=`极速金币：${$.JDtotalcash}金币(≈${$.JDtotalcash / 10000}元)\n`;
     //}
     //if(typeof $.JdzzNum !== "undefined"){
-     //   ReturnMessage+=`京东赚赚：${$.JdzzNum}金币(≈${$.JdzzNum / 10000}元)\n`;
+    //    ReturnMessage+=`京东赚赚：${$.JdzzNum}金币(≈${$.JdzzNum / 10000}元)\n`;
     //}
     //if($.JdMsScore!=0){
     //    ReturnMessage+=`京东秒杀：${$.JdMsScore}秒秒币(≈${$.JdMsScore / 1000}元)\n`;
@@ -153,10 +154,10 @@ async function showMsg() {
     //    ReturnMessage += `东东工厂：${$.ddFactoryInfo}🏭\n`
     //}
 
-    const response = await await PetRequest('energyCollect');
-    const initPetTownRes = await PetRequest('initPetTown');
-    if (initPetTownRes.code === '0' && initPetTownRes.resultCode === '0' && initPetTownRes.message === 'success') {
-        $.petInfo = initPetTownRes.result;
+    //const response = await await PetRequest('energyCollect');
+    //const initPetTownRes = await PetRequest('initPetTown');
+    //if (initPetTownRes.code === '0' && initPetTownRes.resultCode === '0' && initPetTownRes.message === 'success') {
+    //    $.petInfo = initPetTownRes.result;
         if (response.resultCode === '0') {
             ReturnMessage += `东东萌宠：${$.petInfo.goodsInfo.goodsName},`;
             ReturnMessage += `勋章${response.result.medalNum}/${response.result.medalNum+response.result.needCollectMedalNum}块(${response.result.medalPercent}%)\n`;
@@ -169,7 +170,7 @@ async function showMsg() {
     //allMessage+=ReturnMessage;
     //$.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 //}
-async function bean() {
+//async function bean() {
     // console.log(`北京时间零点时间戳:${parseInt((Date.now() + 28800000) / 86400000) * 86400000 - 28800000}`);
     // console.log(`北京时间2020-10-28 06:16:05::${new Date("2020/10/28 06:16:05+08:00").getTime()}`)
     // 不管哪个时区。得到都是当前时刻北京时间的时间戳 new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000

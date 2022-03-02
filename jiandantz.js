@@ -117,11 +117,10 @@ async function showMsg() {
     // }
 
     ReturnMessage=`📣=============账号${$.index}=============📣\n`
-    ReturnMessage+=`账号名称：${$.nickName || $.UserName}\n`;
-    ReturnMessage+=`🧧🧧🧧🧧红包明细🧧🧧🧧🧧`;
+    ReturnMessage+=`账号：${$.nickName || $.UserName}=`;
     ReturnMessage+=`${$.message}\n\n`;
-    allMessage+=ReturnMessage;
-    $.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
+    //allMessage+=ReturnMessage;
+    //$.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }
 async function bean() {
     // console.log(`北京时间零点时间戳:${parseInt((Date.now() + 28800000) / 86400000) * 86400000 - 28800000}`);
@@ -366,7 +365,8 @@ function redPacket() {
                         $.jdhRed = $.jdhRed.toFixed(2)
                         $.balance = data.balance
                         $.expiredBalance = ($.jxRedExpire + $.jsRedExpire + $.jdRedExpire).toFixed(2)
-                        $.message += `\n当前总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n京喜红包：${$.jxRed}(今日将过期${$.jxRedExpire.toFixed(2)})元 🧧\n极速红包：${$.jsRed}(今日将过期${$.jsRedExpire.toFixed(2)})元 🧧\n京东红包：${$.jdRed}(今日将过期${$.jdRedExpire.toFixed(2)})元 🧧\n健康红包：${$.jdhRed}(今日将过期${$.jdhRedExpire.toFixed(2)})元 🧧`;
+                        $.message += `\n总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n`;
+						//$.message += `\n总红包：${$.balance}(今日总过期${$.expiredBalance})元 🧧\n京喜红包：${$.jxRed}(今日将过期${$.jxRedExpire.toFixed(2)})元 🧧\n极速红包：${$.jsRed}(今日将过期${$.jsRedExpire.toFixed(2)})元 🧧\n京东红包：${$.jdRed}(今日将过期${$.jdRedExpire.toFixed(2)})元 🧧\n`;
                     } else {
                         console.log(`京东服务器返回空数据`)
                     }

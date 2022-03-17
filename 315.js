@@ -3,7 +3,7 @@
 
 // 百度315速报
 const request = require('request');
-const $ = new Env('百度315速报');
+
 const options = {
     url: 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd=315&oq=%25E5%25A4%25AE%25E8%25A7%2586&rsv_pq=87dcc52b004bfb4c&rsv_t=947aNVRWF43EksSeDQ%2FD20D86bsgm%2BpbTo5TTQIqTnN%2FP7M0VKd%2F1aX5xyw&rqlang=cn&rsv_enter=1&rsv_dl=tb&rsv_btype=t&inputT=574&rsv_sug3=10&rsv_sug1=8&rsv_sug7=100&rsv_sug2=0&rsv_sug4=574',
     method: 'get',

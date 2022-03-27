@@ -9,7 +9,7 @@ cookie会过期，本有方法可以取新的cookie，但是无法禁止该请�
 变量名：cfxbjck @分割多账户
 
 */
-const $ = new Env('顺丰速运+小程序乘风寻宝记');
+const $ = new Env('乘风寻宝记');
 let status;
 status = (status = ($.getval("cfxbjstatus") || "1")) > 1 ? `${status}` : ""; // 账号扩展字符
 let cfxbjckArr = [], cfxbjcount = ''

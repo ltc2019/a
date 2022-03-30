@@ -13,7 +13,7 @@ zmydtz 1通知 2
 下载地址
 https://page.zuimeiread.com/site/download
 
-
+const $ = new Env('醉美阅读');
 */
 
 

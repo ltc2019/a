@@ -4,7 +4,7 @@ https://club.jd.com/myJdcomments/myJdcomments.action?sort=0
 用Chrome等相同内核浏览器打开上面的链接后按F12键，选择console，复制粘贴以下代码，content 里的内容自由替换，先运行脚本1，再运行脚本2
 脚本1
 京东自动评价脚本1：一键批量评价-不能晒单，追加图片
-var content = '老板好，老板娘也好，最重要的是质量很好，包装严实，材质很好，质量也不错，到货也很快物流满分，包装快递满分，配送员态度满分，好评、好评、好评，重要的话说三遍，不是为了凑字数，确实没有凑字数，字数够了吧？'; 
+var content = '老板态度好，最重要的是质量很好，包装严实，材质很好，质量也不错，到货也很快物流满分，包装快递满分，配送员态度满分，好评、好评、好评，重要的话说三遍，不是为了凑字数，确实没有凑字数，字数够了吧？'; 
 function a(){
 var close=document.getElementsByClassName('btn-9 fail-close');
 if(close.length>0){close[0].click()}
